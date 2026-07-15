@@ -1,0 +1,21 @@
+name: HelloWorld
+
+on:
+  push:
+
+jobs:
+  hello:
+  
+    if: ${{ !contains(github.actor, 'bot') }}
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Print hello
+        run: |
+          echo "hello world"
+          echo "Pushed by: $GITHUB_ACTOR"
+          echo "Ref: $GITHUB_REF"
+          echo "Commit: $GITHUB_SHA"
